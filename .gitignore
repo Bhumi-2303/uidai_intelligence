@@ -1,7 +1,17 @@
-uidai/
+# Python junk
 __pycache__/
-.ipynb_checkpoints/
 *.pyc
+
+# Jupyter junk
+.ipynb_checkpoints/
+
+# Virtual environment
+uidai/
 .env
-data/
-*.csv
+
+# Ignore ONLY raw UIDAI data (sensitive & large)
+data/raw/
+
+# Ignore large generated outputs (optional)
+outputs/dashboard_data/predictions.csv
+outputs/dashboard_data/actions.csv
