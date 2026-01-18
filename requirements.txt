@@ -1,0 +1,14 @@
+pandas
+dash
+fastapi
+uvicorn
+plotly
+numpy
+jupyter
+matplotlib
+seaborn
+openpyxl
+requests
+jsonschema
+streamlit
+statsmodels
