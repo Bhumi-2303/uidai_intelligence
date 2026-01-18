@@ -17,6 +17,7 @@ from src.eda import (
     before_after_district_count,
     invalid_districts_chart
 )
+from src.analysis import generate_state_analysis
 
 # =====================================================
 # 1️⃣ LOAD RAW UIDAI DATA
@@ -85,4 +86,17 @@ before_after_district_count(
 invalid_districts_chart(after_df)
 
 print("📊 Before vs After charts generated")
+
+# Generate per-state analysis for all states present in the registry or data
+# Use states present in the final dataframe to cover all available states
+states = sorted(final["state"].dropna().unique())
+
+for st in states:
+    try:
+        print(f"🔎 Generating analysis for {st}")
+        generate_state_analysis(enrol_before_norm, demo, bio, st)
+        # before vs after chart per state
+        before_after_district_count(before_df, after_df, state=st)
+    except Exception as e:
+        print(f"Error generating analysis for {st}: {e}")
 

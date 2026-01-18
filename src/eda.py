@@ -12,7 +12,8 @@ def before_after_district_count(before_df, after_df, state):
     a = after_df[after_df["state"].str.upper() == state]
 
     before_count = b["district"].nunique()
-    after_count  = a["district_clean"].nunique()
+    # Count only valid, normalized districts after cleaning
+    after_count = a.loc[a["is_valid_district"], "district_clean"].nunique()
 
     import matplotlib.pyplot as plt
     from pathlib import Path
